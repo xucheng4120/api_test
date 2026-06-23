@@ -1,24 +1,25 @@
 # .github/workflows/test.yml
+# 这是一个 GitHub Actions 工作流配置文件，用于在代码推送或拉取请求时自动运行接口自动化测试。
 
 name: 接口自动化测试
 
 on:
   push:
-    branches: [ main ]       # 推送到 main 分支时触发
+    branches: [ main ]
   pull_request:
-    branches: [ main ]       # 提交 PR 时触发
-  workflow_dispatch:          # 支持手动触发
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ubuntu-latest    # 在 Linux 云服务器上运行
+    runs-on: ubuntu-latest
 
     steps:
       - name: 拉取代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 安装 Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -29,8 +30,8 @@ jobs:
         run: pytest testcases/ -v --env=test --html=reports/report.html --self-contained-html
 
       - name: 上传测试报告
-        uses: actions/upload-artifact@v3
-        if: always()          # 不管成功失败都上传报告
+        uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: test-report
           path: reports/report.html
