@@ -62,3 +62,6 @@ class BaseApi:
 
     def delete(self, path):
         return self._request("DELETE", path)
+    
+    def patch(self, path, data=None):
+        return self._request("PATCH", path, json=data)

@@ -1,0 +1,33 @@
+# data/users.yaml
+create_user:
+  - case: 正常创建用户
+    data:
+      name: "张三"
+      username: "zhangsan"
+      email: "zhangsan@test.com"
+    expected:
+      status_code: 201
+
+  - case: 创建用户名为数字
+    data:
+      name: "12345"
+      username: "user12345"
+      email: "user12345@test.com"
+    expected:
+      status_code: 201
+
+update_user:
+  - case: 完整更新用户
+    data:
+      name: "李四"
+      username: "lisi"
+      email: "lisi@test.com"
+    expected:
+      status_code: 200
+
+patch_user:
+  - case: 只更新用户名字
+    data:
+      name: "只改名字"
+    expected:
+      status_code: 200
