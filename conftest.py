@@ -74,3 +74,18 @@ def pytest_runtest_makereport(item, call):
                 name="失败时的请求日志",
                 attachment_type=allure.attachment_type.TEXT
             )
+
+@pytest.fixture(scope="session")
+def created_post_id(api):
+    """
+    依赖 api fixture，先创建一篇文章，
+    返回 id 给后续用例使用，session 级别只创建一次
+    """
+    data = {"title": "共享文章", "body": "内容", "userId": 1}
+    response = api.post("/posts", data=data)
+    post_id = response.json()["id"]
+    logger.info(f"前置：创建了文章，id={post_id}")
+
+    yield post_id
+
+    logger.info(f"后置：文章 id={post_id} 测试完毕")
