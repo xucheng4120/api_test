@@ -1,0 +1,26 @@
+# data/posts.yaml
+
+create_post:
+  - case: 正常创建文章
+    data:
+      title: "自动化测试文章"
+      body: "这是正文内容"
+      userId: 1
+    expected:
+      status_code: 201
+
+  - case: 标题为数字
+    data:
+      title: "12345"
+      body: "数字标题测试"
+      userId: 2
+    expected:
+      status_code: 201
+
+  - case: 内容为空字符串
+    data:
+      title: "空内容测试"
+      body: ""
+      userId: 1
+    expected:
+      status_code: 201
