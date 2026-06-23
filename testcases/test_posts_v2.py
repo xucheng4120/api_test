@@ -69,14 +69,4 @@ class TestPostsV2:
         with allure.step("验证状态码为 404"):
             assert response.status_code == 404
             allure.attach(str(response.json()), name="响应数据", attachment_type=allure.attachment_type.TEXT)
-
-    @allure.title("故意失败的用例 - 演示日志附件")
-    @allure.description("断言错误的状态码，触发失败，观察 Allure 报告里的日志附件")
-    @allure.severity("minor")
-    @allure.story("异常场景")
-    def test_intentional_failure(self, api):
-        with allure.step("发送 GET /posts/1 请求"):
-            response = api.get("/posts/1")
-
-        with allure.step("故意断言错误的状态码"):
-            assert response.status_code == 999  # 故意写错，触发失败
+            
