@@ -7,7 +7,7 @@ class EnvConfig:
     """各环境配置"""
 
     TEST = {
-        "base_url": "https://jsonplaceholder.typicode.com",
+        "base_url": "https://medu.samjan.com", # 模拟测试环境
         "timeout": 10,
         "headers": {
             "Content-Type": "application/json",
@@ -16,7 +16,7 @@ class EnvConfig:
     }
 
     STAGING = {
-        "base_url": "https://jsonplaceholder.typicode.com",  # 模拟预发环境
+        "base_url": "https://medu.samjan.com",  # 模拟预发环境
         "timeout": 15,
         "headers": {
             "Content-Type": "application/json",
@@ -26,7 +26,7 @@ class EnvConfig:
     }
 
     PROD = {
-        "base_url": "https://jsonplaceholder.typicode.com",  # 模拟生产环境
+        "base_url": "https://zhike.samjan.com",  # 模拟生产环境
         "timeout": 20,
         "headers": {
             "Content-Type": "application/json",

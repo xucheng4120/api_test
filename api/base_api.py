@@ -20,6 +20,7 @@ class BaseApi:
         self.timeout = config["timeout"]
         self.session = requests.Session()
         self.session.headers.update(config["headers"])
+        self.session.trust_env = False  # 禁用系统代理，直连
         logger.info(f"API 客户端初始化完成 | 环境: {env} | BaseURL: {self.base_url}")
 
     def _log_request(self, method, url, **kwargs):

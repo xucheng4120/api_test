@@ -31,3 +31,34 @@ patch_user:
       name: "只改名字"
     expected:
       status_code: 200
+
+student_page:
+  - case: 查询第一页学生列表
+    data:
+      pageNum: 1
+      pageSize: 10
+      startTime: ""
+      endTime: ""
+    expected:
+      status_code: 200
+      code: 0
+
+  - case: 查询第二页学生列表
+    data:
+      pageNum: 2
+      pageSize: 10
+      startTime: ""
+      endTime: ""
+    expected:
+      status_code: 200
+      code: 0
+
+  - case: 每页显示20条
+    data:
+      pageNum: 1
+      pageSize: 20
+      startTime: ""
+      endTime: ""
+    expected:
+      status_code: 200
+      code: 0
